@@ -1,0 +1,50 @@
+﻿първо трябва да се вземе тоукен 
+
+
+
+подава се на този урл през Postman
+
+http://localhost:51443/token 
+Post заявка
+
+heanders: x-form 
+grant_type:password
+
+body:
+username:vasil.kamburov2@abv.bg
+password:123456
+
+
+Metodi:
+
+User
+http://localhost:51443/api/users/register        post   =>регистрира подаваш json усер пример {"FirstName": "Vasil",
+  "LastName": "Kamburov",
+  "Email": null,
+  "City": "Burgas",
+  "UserName": "vasil",
+  "Password": "123456"}
+http://localhost:51443/api/users/get             get    =>връща всички юзъри които не са експайр
+http://localhost:51443/api/users/get/{id}        get    =>връща юзър по ид които не са експайр
+http://localhost:51443/api/users/login           post   =>иска {"UserName": "vasil",
+  "Password": "123456"} връща горния цял модел на user v json
+http://localhost:51443/api/users/expireuser/{id} post ili put => сменя отметката на юзър че е експайър
+http://localhost:51443/api/users/updateUserData  post ili put => изисква цял юзър json като първия 
+
+
+Movies
+http://localhost:51443/api/movies/getAll                                   get  => връща всички филми от базата формат 
+http://localhost:51443/api/movies/getbyid/id             		   get  => връща филми от базата с това ид 
+http://localhost:51443/api/movies/add                    		   post => добавя филм в базата изисква този формат { "Name" = "titanik", "ImdbID" = "sdfs43dfg"}
+http://localhost:51443/api/movies/likeamovie             		   post => харесва филм като изисква {'imdbid','userid'}
+http://localhost:51443/api/movies/dislikeamovie         		   post => нехаресва филм като изисква {'imdbid','userid'}
+http://localhost:51443/api/movies/gettoplikedmovies/{numberOfMovies}       get  => връща най харесвани филми бройката е от number of movies
+http://localhost:51443/api/movies/gettopdislikedmovies/{numberOfMovies}    get  => =//=
+
+
+Comments
+http://localhost:51443/api/movies/CreateComment                           post         => създава комента за филм от юзър изисква следния обект {'userid','imdbid','text'}
+http://localhost:51443/api/movies/DeleteComment                           post ili put => изтрива коментар като изисква само {'comentid'}
+http://localhost:51443/api/movies/GetAllCommentsForAMovie/{imdbid}        get          => връща всички коментари за даден филм от всички юзъри
+http://localhost:51443/api/movies/GetAllCommentsForAUser/{userid}         get          => връща всички коментари от даден юзър за всички филми
+
