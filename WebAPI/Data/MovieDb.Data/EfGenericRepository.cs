@@ -22,9 +22,9 @@
 
         protected IMoviesContext Context { get; set; }
 
-        public virtual IQueryable<T> All()
+        public virtual IQueryable<T> All
         {
-            return this.DbSet.AsQueryable();
+            get{ return this.DbSet.AsQueryable(); }
         }
 
         public virtual T GetById(object id)

@@ -7,7 +7,6 @@ using WebAPI.Models.Movies;
 
 namespace WebAPI.Controllers
 {
-    [Authorize]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class MoviesController : ApiController
     {
@@ -23,7 +22,7 @@ namespace WebAPI.Controllers
         }
         public IHttpActionResult GetAll()
         {
-            var res = this.movies.All().OrderBy(x => x.Name).ToList();
+            var res = this.movies.All.OrderBy(x => x.Name).ToList();
             return this.Ok(res);
         }
 
@@ -34,14 +33,14 @@ namespace WebAPI.Controllers
                 return this.BadRequest("Id of movie can`t be null or empty");
             }
 
-            var res = this.movies.All().Where(x => x.ImdbID == id).FirstOrDefault();
+            var res = this.movies.All.Where(x => x.ImdbID == id).FirstOrDefault();
 
             return this.Ok(res);
         }
 
         public IHttpActionResult Add(MoviesCreateModel movie)
         {
-            var currentMovie = this.movies.All().Where(x => x.ImdbID == movie.ImdbID).FirstOrDefault();
+            var currentMovie = this.movies.All.Where(x => x.ImdbID == movie.ImdbID).FirstOrDefault();
             if (currentMovie == null)
             {
                 try
@@ -55,7 +54,7 @@ namespace WebAPI.Controllers
                     return this.BadRequest("Invalid movie to add");
                 }
 
-                return this.Ok(this.movies.All().Where(x => x.Name == movie.Name).FirstOrDefault().Id);
+                return this.Ok(this.movies.All.Where(x => x.Name == movie.Name).FirstOrDefault().Id);
             }
             else
             {
@@ -68,7 +67,7 @@ namespace WebAPI.Controllers
         {
             string movieImdbid = model.ImdbID;
             int userId = model.Userid;
-            var currentMovie = this.movies.All().Where(x => x.ImdbID == movieImdbid).FirstOrDefault();
+            var currentMovie = this.movies.All.Where(x => x.ImdbID == movieImdbid).FirstOrDefault();
             if (currentMovie == null)
             {
                 return this.BadRequest("No such movie");
@@ -101,7 +100,7 @@ namespace WebAPI.Controllers
         {
             string movieImdbid = model.ImdbID;
             int userId = model.Userid;
-            var currentMovie = this.movies.All().Where(x => x.ImdbID == movieImdbid).FirstOrDefault();
+            var currentMovie = this.movies.All.Where(x => x.ImdbID == movieImdbid).FirstOrDefault();
             if (currentMovie == null)
             {
                 return this.BadRequest("No such movie");
@@ -131,25 +130,25 @@ namespace WebAPI.Controllers
         public IHttpActionResult GetTopLikedMovies(int id)
         {
             int number = id;
-            var res = this.movies.All().OrderByDescending(x => x.LikesNumber).Take(number).ToList();
+            var res = this.movies.All.OrderByDescending(x => x.LikesNumber).Take(number).ToList();
             return this.Ok(res.Select(x => x.ImdbID));
         }
         [HttpGet]
         public IHttpActionResult GetTopDisLikedMovies(int id)
         {
             int number = id;
-            var res = this.movies.All().OrderByDescending(x => x.DislikesNumber).Take(number).ToList();
+            var res = this.movies.All.OrderByDescending(x => x.DislikesNumber).Take(number).ToList();
             return this.Ok(res.Select(x => x.ImdbID));
         }
 
 
         private bool isAlreadyLikedOrDislikedAMovie(int userId, Movies movie)
         {
-            dynamic islikedOrDisliked = this.likes.All().Where(x => x.MoviesId == movie.Id && x.UsersId == userId).FirstOrDefault();
+            dynamic islikedOrDisliked = this.likes.All.Where(x => x.MoviesId == movie.Id && x.UsersId == userId).FirstOrDefault();
 
             if (islikedOrDisliked == null)
             {
-                islikedOrDisliked = this.dislikes.All().Where(x => x.MoviesId == movie.Id && x.UsersId == userId).FirstOrDefault();
+                islikedOrDisliked = this.dislikes.All.Where(x => x.MoviesId == movie.Id && x.UsersId == userId).FirstOrDefault();
             }
 
             if (islikedOrDisliked != null)

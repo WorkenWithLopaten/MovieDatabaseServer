@@ -11,7 +11,6 @@ using WebAPI.Models.Comments;
 
 namespace WebAPI.Controllers
 {   
-    [Authorize]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CommentsController : ApiController
     {
@@ -61,7 +60,7 @@ namespace WebAPI.Controllers
                 return this.BadRequest("Can`t save this comment");
             }
 
-            var lastCommentId = this.comments.All().Where(x=>x.UsersId==userId).OrderByDescending(x => x.CreatedOn).FirstOrDefault().Id;
+            var lastCommentId = this.comments.All.Where(x=>x.UsersId==userId).OrderByDescending(x => x.CreatedOn).FirstOrDefault().Id;
 
             return this.Ok(lastCommentId);
         }
@@ -69,7 +68,7 @@ namespace WebAPI.Controllers
         public IHttpActionResult DeleteComment(DeleteCommentModel comment)
         {
             int comentId = comment.CommentId;
-            var currentComent = this.comments.All().Where(x => x.Id == comentId && x.isDeleted == false).FirstOrDefault();
+            var currentComent = this.comments.All.Where(x => x.Id == comentId && x.isDeleted == false).FirstOrDefault();
             if (currentComent == null)
             {
                 return this.BadRequest("comment is either deleted or doesn`t exist");
@@ -96,7 +95,7 @@ namespace WebAPI.Controllers
             {
                 return this.BadRequest("no such movie");
             }
-            var allMovies = this.comments.All().Where(x => x.MoviesId == currentMovie.Id && x.isDeleted == false);
+            var allMovies = this.comments.All.Where(x => x.MoviesId == currentMovie.Id && x.isDeleted == false);
 
             return this.Ok(allMovies);
         }
@@ -109,18 +108,18 @@ namespace WebAPI.Controllers
             {
                 return this.BadRequest("no such user");
             }
-            var allMovies = this.comments.All().Where(x => x.UsersId== userId && x.isDeleted == false);
+            var allMovies = this.comments.All.Where(x => x.UsersId== userId && x.isDeleted == false);
 
             return this.Ok(allMovies);
         }
 
         private Users GetUser(int userId)
         {
-            return this.users.All().Where(x => x.UsersId == userId).FirstOrDefault();
+            return this.users.All.Where(x => x.UsersId == userId).FirstOrDefault();
         }
         private Movies GetMovie(string imdbId)
         {
-            return this.movies.All().Where(x => x.ImdbID == imdbId).FirstOrDefault();
+            return this.movies.All.Where(x => x.ImdbID == imdbId).FirstOrDefault();
         }
     }
 

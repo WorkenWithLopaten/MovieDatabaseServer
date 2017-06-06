@@ -12,8 +12,6 @@
         public static void Initiliaze()
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<MoviesContext, ConfigurationMovieDB>());
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MovieDbAPIContext, ConfigurationApiUserDB>());
-            new MovieDbAPIContext().Database.Initialize(true);
             new MoviesContext().Database.Initialize(true);
         }
     }

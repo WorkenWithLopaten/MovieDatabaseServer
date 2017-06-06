@@ -76,9 +76,7 @@
     <Compile Include="EfGenericRepository.cs" />
     <Compile Include="IMoviesContext.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="Migrations\ConfigurationApiUserDB.cs" />
     <Compile Include="Migrations\ConfigurationMovieDB.cs" />
-    <Compile Include="MovieDbAPIContext.cs" />
     <Compile Include="MoviesContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
