@@ -27,19 +27,23 @@ namespace WebAPI.Controllers
         {
             var text = model.Text;
             var userId = model.UserId;
-            var imdbId = model.ImdbId;
+            var movieId = model.MovieId;
 
             if (string.IsNullOrEmpty(text))
             {
                 return this.BadRequest("Comment can`t be empty");
             }
+
             var currentUser = this.GetUser(userId);
+
             if (currentUser == null)
             {
                 return this.BadRequest("No such user");
             }
-            var currentMovie = this.GetMovie(imdbId);
-            if (currentUser == null)
+
+            var currentMovie = this.GetMovie(movieId);
+
+            if (currentMovie == null)
             {
                 return this.BadRequest("No such movie");
             }
@@ -50,6 +54,7 @@ namespace WebAPI.Controllers
                 UserId = userId,
                 MovieId = currentMovie.Id
             };
+
             try
             {
                 this.comments.Add(comment);
@@ -64,6 +69,7 @@ namespace WebAPI.Controllers
 
             return this.Ok(lastCommentId);
         }
+
         [HttpPut]
         public IHttpActionResult DeleteComment(DeleteCommentModel comment)
         {
@@ -87,39 +93,37 @@ namespace WebAPI.Controllers
             return this.Ok();
         }
 
-        public IHttpActionResult GetAllCommentsForAMovie(string id)
+        public IHttpActionResult GetAllCommentsForAMovie(int id)
         {
-            string imdbId = id;
-            var currentMovie = this.GetMovie(imdbId);
+            var currentMovie = this.GetMovie(id);
             if (currentMovie == null)
             {
                 return this.BadRequest("no such movie");
             }
-            var allMovies = this.comments.All.Where(x => x.MoviesId == currentMovie.Id && x.isDeleted == false);
+            var allMovies = this.comments.All.Where(x => x.MovieId == currentMovie.Id && x.isDeleted == false).ToList();
 
             return this.Ok(allMovies);
         }
 
         public IHttpActionResult GetAllCommentsFromAUser(int id)
         {
-            int userId = id;
-            var currentUser = this.GetUser(userId);
+            var currentUser = this.GetUser(id);
             if (currentUser == null)
             {
                 return this.BadRequest("no such user");
             }
-            var allMovies = this.comments.All.Where(x => x.UserId == userId && x.isDeleted == false);
+            var allMovies = this.comments.All.Where(x => x.UserId == id && x.isDeleted == false).ToList();
 
             return this.Ok(allMovies);
         }
 
         private User GetUser(int userId)
         {
-            return this.users.All.Where(x => x.UsersId == userId).FirstOrDefault();
+            return this.users.All.Where(x => x.Id == userId).FirstOrDefault();
         }
-        private Movie GetMovie(string imdbId)
+        private Movie GetMovie(int movieId)
         {
-            return this.movies.All.Where(x => x.ImdbID == imdbId).FirstOrDefault();
+            return this.movies.All.Where(x => x.Id == movieId).FirstOrDefault();
         }
     }
 

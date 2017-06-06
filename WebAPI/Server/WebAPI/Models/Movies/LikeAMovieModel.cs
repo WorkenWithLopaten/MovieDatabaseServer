@@ -9,6 +9,6 @@ namespace WebAPI.Models.Movies
     {
         public int Userid { get; set; }
 
-        public string MovieId { get; set; }
+        public int MovieId { get; set; }
     }
 }

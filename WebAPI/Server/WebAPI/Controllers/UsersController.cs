@@ -4,6 +4,7 @@
     using MovieDb.Data;
     using MovieDb.Models;
     using System;
+    using System.Data.Entity;
     using System.Linq;
     using System.Net.Http;
     using System.Web.Http;
@@ -131,7 +132,7 @@
             var shouldUpdate = false;
             var changedCity = false;
             var changeCountry = false;
-            var currentUser = this.users.All.Where(x => x.UserName == userData.UserName).FirstOrDefault();
+            var currentUser = this.users.All.Include(x=>x.UserData.Adress.City.Country).Where(x => x.UserName == userData.UserName).FirstOrDefault();
             if (currentUser == null)
             {
                 return this.BadRequest("No such user");

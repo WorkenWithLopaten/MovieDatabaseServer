@@ -13,12 +13,14 @@ namespace WebAPI.Controllers
         private readonly IRepository<Movie> movies;
         private readonly IRepository<Like> likes;
         private readonly IRepository<Dislike> dislikes;
+        private readonly IRepository<User> users;
 
-        public MoviesController(IRepository<Movie> movies, IRepository<Like> likes, IRepository<Dislike> dislikes)
+        public MoviesController(IRepository<Movie> movies, IRepository<Like> likes, IRepository<Dislike> dislikes,IRepository<User> users)
         {
             this.movies = movies;
             this.likes = likes;
             this.dislikes = dislikes;
+            this.users = users;
         }
         public IHttpActionResult GetAll()
         {
@@ -26,26 +28,22 @@ namespace WebAPI.Controllers
             return this.Ok(res);
         }
 
-        public IHttpActionResult GetById(string id)
+        public IHttpActionResult GetById(int id)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                return this.BadRequest("Id of movie can`t be null or empty");
-            }
 
-            var res = this.movies.All.Where(x => x.ImdbID == id).FirstOrDefault();
+            var res = this.movies.All.Where(x => x.Id == id).FirstOrDefault();
 
             return this.Ok(res);
         }
 
         public IHttpActionResult Add(MoviesCreateModel movie)
         {
-            var currentMovie = this.movies.All.Where(x => x.ImdbID == movie.ImdbID).FirstOrDefault();
+            var currentMovie = this.movies.All.Where(x => x.Name == movie.Name).FirstOrDefault();
             if (currentMovie == null)
             {
                 try
                 {
-                    var movieToAdd = new Movie { Name = movie.Name, ImdbID = movie.ImdbID };
+                    var movieToAdd = new Movie { Name = movie.Name};
                     this.movies.Add(movieToAdd);
                     this.movies.SaveChanges();
                 }
@@ -65,12 +63,17 @@ namespace WebAPI.Controllers
 
         public IHttpActionResult LikeAMovie(LikeAMovieModel model)
         {
-            string movieImdbid = model.ImdbID;
+            int movieId = model.MovieId;
             int userId = model.Userid;
-            var currentMovie = this.movies.All.Where(x => x.ImdbID == movieImdbid).FirstOrDefault();
+            var currentMovie = this.movies.All.Where(x => x.Id == movieId).FirstOrDefault();
             if (currentMovie == null)
             {
                 return this.BadRequest("No such movie");
+            }
+            var currentUser = this.users.All.Where(x => x.Id == userId).FirstOrDefault();
+            if (currentUser == null)
+            {
+                return this.BadRequest("No such user");
             }
             currentMovie.LikesNumber = currentMovie.LikesNumber + 1;
 
@@ -98,12 +101,17 @@ namespace WebAPI.Controllers
 
         public IHttpActionResult DislikeAMovie(LikeAMovieModel model)
         {
-            string movieImdbid = model.ImdbID;
+            int movieId = model.MovieId;
             int userId = model.Userid;
-            var currentMovie = this.movies.All.Where(x => x.ImdbID == movieImdbid).FirstOrDefault();
+            var currentMovie = this.movies.All.Where(x => x.Id == movieId).FirstOrDefault();
             if (currentMovie == null)
             {
                 return this.BadRequest("No such movie");
+            }
+            var currentUser = this.users.All.Where(x => x.Id == userId).FirstOrDefault();
+            if (currentUser == null)
+            {
+                return this.BadRequest("No such user");
             }
             currentMovie.DislikesNumber = currentMovie.DislikesNumber + 1;
             try
@@ -130,15 +138,15 @@ namespace WebAPI.Controllers
         public IHttpActionResult GetTopLikedMovies(int id)
         {
             int number = id;
-            var res = this.movies.All.OrderByDescending(x => x.LikesNumber).Take(number).ToList();
-            return this.Ok(res.Select(x => x.ImdbID));
+            var res = this.movies.All.Where(x=>x.LikesNumber>0).OrderByDescending(x => x.LikesNumber).Take(number).ToList();
+            return this.Ok(res.Select(x => x.Id));
         }
         [HttpGet]
         public IHttpActionResult GetTopDisLikedMovies(int id)
         {
             int number = id;
-            var res = this.movies.All.OrderByDescending(x => x.DislikesNumber).Take(number).ToList();
-            return this.Ok(res.Select(x => x.ImdbID));
+            var res = this.movies.All.Where(x=>x.DislikesNumber>0).OrderByDescending(x => x.DislikesNumber).Take(number).ToList();
+            return this.Ok(res.Select(x => x.Id));
         }
 
 
