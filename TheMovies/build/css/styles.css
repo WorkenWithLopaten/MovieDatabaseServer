@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css?family=Droid+Sans:400,700");@import url("https://fonts.googleapis.com/css?family=Kreon:300,400,700");@font-face{font-family:'BlackJack';src:url("../../src/assets/fonts/blackjack.otf")}
+body{background:url("../../src/assets/images/background-pattern.jpg");font-size:15px}body a,body li a,body li a span{text-decoration:none;display:block;color:#393939;transition:all ease-in-out .2s}
+body a.active,body a :hover,body a :focus,body li a.active,body li a :hover,body li a :focus,body li a span.active,body li a span :hover,body li a span :focus{color:#437d8b}
+body li.active a,body li a:hover{color:#437d8b !important;text-decoration:none;background:none !important}
+body h1,body h2,body h3,body h4,body h5,body h6{color:#1d1d1d}body h1,body h2,body h3,body h4,body h5,body h6,body a,body a *{font-family:'Kreon',serif;font-weight:normal}
+body h1{font-size:28px}body h2{font-size:24px}body p{font-family:'Droid Sans',sans-serif;color:#929292;font-size:14px}
+body section{margin-top:40px}body .darker{color:#437d8b}body .subtitle{font-family:'Kreon',serif;font-weight:300;font-size:16px}
+body .section-separator{width:80%;margin-top:50px;color:#f0f0f0}body .custom-list{padding-left:17px}
+body .custom-list li{font-family:'Droid Sans',sans-serif;color:#929292}
+body .custom-list li a{color:#929292}body .btn-custom{background:0;border:1px solid #cbcbcb;color:#1d1d1d;font-family:'Kreon',serif;float:right;padding:5px 10px;font-weight:900;transition:all ease-in-out .3s}
+body .btn-custom:hover{color:#fff;background:#437d8b}body .custom-input{border:1px #cbcbcb;border-style:none none solid solid;border-radius:0;box-shadow:inset 3px 5px 32px 1px rgba(0,0,0,0.08);color:silver;font-family:"Georgia",serif;font-style:italic}
+body .custom-input.search-input{position:relative;width:200px;margin:auto}body .custom-input.comment-input{border:1px #f0f0f0 solid;box-shadow:inset 3px 5px 32px 1px rgba(0,0,0,0.08);width:300px;padding:20px}
+body textarea.custom-textarea{width:100% !important}body .white-bg{background:#fff}
+body .main-container{box-shadow:0 1px 5px 1px rgba(0,0,0,0.08);border:1px solid white;margin:30px auto}
+body .fa{font-size:22px !important;transition:all ease-in-out .3s}body .fa.social-icon{color:#e3e3e3;margin-right:5px}
+body .fa:hover,body .fa.social-icon:hover{color:#437d8b}body .google-maps{position:relative;padding-bottom:30%;height:0;overflow:hidden}
+body .google-maps iframe{position:absolute;top:0;left:0;width:100% !important;height:100% !important}
+body .logo-holder{display:inline-block;width:auto;transition:all ease-in-out .3s}
+body .logo-holder:hover{cursor:pointer;text-decoration:none}body .logo-holder:hover .logo-name{color:#393939}
+body .logo-holder .logo-img{background:url(../../src/assets/images/logo.png) no-repeat;background-position:0 5px;background-size:42px 50px;display:inline-block;float:left;width:50px;height:55px}
+body .logo-holder .logo-name{color:#393939;font-family:'BlackJack',cursive;font-weight:normal;font-size:32px;letter-spacing:2px;display:inline-block}
+body .logo-holder .logo-slogan{color:#437d8b;text-transform:uppercase;margin:-10px 0 0 55px;letter-spacing:-0.5px}
+body header{color:#393939}body header .top-nav{border-bottom:1px solid #cbcbcb;box-shadow:inset 4px 24px 60px -8px rgba(0,0,0,0.08);position:relative}
+body header .top-nav li a{padding-bottom:0;margin-top:15px}body header .top-nav .navbar-default{background:0;border:0;margin-top:20px}
+body header .top-nav .fixed-form{position:absolute;top:0;right:0}body header .top-nav .icon-group{position:absolute;top:6px;left:-105px}
+body header .top-nav .icon-group a{display:inline-block}body header .top-nav .custom-search{position:absolute;top:10px;right:10px;color:silver}
+body header .main-nav{background:url(../../src/assets/images/menu-pattern.jpg);box-shadow:inset 0 2px 9px 0 rgba(0,0,0,0.08)}
+body header .main-nav a{text-transform:uppercase}body .page-header{padding:0;margin:0;border:0}
+body .page-header .page-header-holder{border:1px #f0f0f0;border-style:solid none solid;padding-bottom:10px}
+body .page-header .custom-breadcrumbs .breadcrumb{background:0;margin:0;padding-left:0}
+body .page-header .custom-breadcrumbs .breadcrumb li+li:before{color:#929292;content:"\0000bb"}
+body .page-header .custom-breadcrumbs .breadcrumb li.active{font-family:'Kreon',serif;color:#437d8b}
+body .page-header .custom-breadcrumbs .breadcrumb a{display:inline}body .carousel.custom-carousel img{object-fit:cover}
+body .carousel.custom-carousel .carousel-indicators{bottom:-35px;margin-bottom:0}
+body .carousel.custom-carousel .carousel-indicators li{width:10px;height:10px;background:#dfdfdf;border:2px solid #dfdfdf;transition:all ease-in-out .3s}
+body .carousel.custom-carousel .carousel-indicators li:hover,body .carousel.custom-carousel .carousel-indicators li.active{background-color:#1e1e1e}
+body .carousel.custom-carousel .custom-chevron{position:absolute;height:44px;width:38px;display:block;top:178px}
+body .carousel.custom-carousel .custom-chevron.custom-chevron-left{background:url("../../src/assets/images/carousel-arrow-left.png") no-repeat center;left:-6px}
+body .carousel.custom-carousel .custom-chevron.custom-chevron-right{background:url("../../src/assets/images/carousel-arrow-right.png") no-repeat center;right:-6px}
+body .carousel.custom-carousel .carousel-caption{left:initial;right:5%;top:15%;width:40%;height:70%;background:rgba(0,0,0,0.59);text-align:left;padding:5%}
+body .carousel.custom-carousel .carousel-caption h2{font-size:28px;font-weight:100;margin-top:0;color:#fff}
+body .carousel.custom-carousel#home-carousel img{width:100%;height:400px}body .carousel.custom-carousel#media-carousel img{width:100px;height:100px;float:left;margin-right:25px;border:1px solid #f0f0f0;padding:5px;box-shadow:1px 4px 6px 1px rgba(0,0,0,0.08)}
+body .carousel.custom-carousel#media-carousel img:last-of-type{margin-right:0}body .carousel.custom-carousel#media-carousel .custom-chevron{top:28px}
+body .single-post .post-meta{border:1px #f0f0f0;border-style:solid none solid}body .single-post .post-meta p{font-family:'Kreon',serif;margin-bottom:0;padding:5px 0}
+body .single-post .post-content{margin-top:20px}body .single-post-image.thumbnail{width:350px;height:250px;float:left;margin:0 20px 20px 0}
+body .single-post-image.thumbnail img{width:100%;height:100%;object-fit:cover}.categories-holder .thumbnail img{width:100%;height:220px;object-fit:cover}
+#blog-single .single-post{margin-top:20px}#blog-single .single-comment{padding:25px;border:1px solid #f0f0f0;box-shadow:inset 0 1px 70px 18px #f9f9f9;position:relative;overflow:visible;margin-bottom:40px;width:80%}
+#blog-single .single-comment:after{content:'';display:block;position:absolute;bottom:-21px;right:5%;width:22px;height:22px;background:url("../../src/assets/images/comment-arrow.png") no-repeat;background-size:22px}
+#blog-single .single-comment img.media-object{width:100px;height:100px;object-fit:cover;border:1px solid #cbcbcb;border-radius:3px;padding:3px}
+#blog-single .add-comment{width:80%}#blog-single .comment-date{position:absolute;right:25px;top:25px;font-style:italic;font-family:'Georgia',serif;color:#dfdfdf}
+#blog-single .btn-read-more{position:absolute;bottom:25px;right:25px}.pagination.custom-pagination{display:block;float:right}
+.pagination.custom-pagination li a{color:#1d1d1d !important;border-color:#f0f0f0;transition:all ease-in-out .3s;border-radius:3px;margin-right:10px}
+.pagination.custom-pagination li:last-child a{margin-right:0}.pagination.custom-pagination li.active a,.pagination.custom-pagination li:hover a{background:#437d8b !important;color:#fff !important;border-color:#437d8b}
+#about-us h3,#about-us h4{margin-top:40px}#about-us .btn-custom{float:none;margin-top:40px}
+.footer{background:#f9f9f9;padding:30px 30px 10px 30px;border-top:1px solid #cbcbcb;box-shadow:inset 1px 1px 1px 1px #fff;margin-top:40px}
+.footer h3{margin-top:10px}@media only screen and (max-device-width:1024px){body .main-container{margin:10px}
+body .custom-carousel.carousel .carousel-caption{width:90%}body .categories-holder{text-align:center}
+body .carousel.custom-carousel#media-carousel img{margin-right:10px}body #blog-single .single-comment{width:100%}
+body #blog-single .single-comment .comment-date{top:5px}body #blog-single .single-comment textarea.custom-textarea{width:inherit !important}
+body #blog-single .add-comment{width:100%;margin-bottom:40px}body #blog-single .single-post-image.thumbnail{width:100%}
+body .google-maps{padding-bottom:50%}body .custom-input.comment-input{width:100%;margin:auto}
+}

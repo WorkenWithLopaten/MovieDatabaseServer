@@ -13,6 +13,7 @@
         [Required]
         [MaxLength(200)]
         public string AdressText { get; set; }
+
         public virtual int CityId { get; set; }
         public virtual City City { get; set; }
 

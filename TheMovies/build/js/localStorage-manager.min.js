@@ -1,0 +1,1 @@
+"use strict";function setLocalStorageItem(t,e){null===localStorage.getItem(t)&&localStorage.setItem(t,e)}function getLocalStorageItem(t){return null!==localStorage.getItem(t)?localStorage.getItem(t):null}
