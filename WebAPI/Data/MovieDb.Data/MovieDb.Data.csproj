@@ -76,6 +76,34 @@
     <Compile Include="EfGenericRepository.cs" />
     <Compile Include="IMoviesContext.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Migrations\201706061354374_remasteredDB.cs" />
+    <Compile Include="Migrations\201706061354374_remasteredDB.Designer.cs">
+      <DependentUpon>201706061354374_remasteredDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061406572_fix.cs" />
+    <Compile Include="Migrations\201706061406572_fix.Designer.cs">
+      <DependentUpon>201706061406572_fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061439392_AnotationFixed.cs" />
+    <Compile Include="Migrations\201706061439392_AnotationFixed.Designer.cs">
+      <DependentUpon>201706061439392_AnotationFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061442005_AnotationAdded.cs" />
+    <Compile Include="Migrations\201706061442005_AnotationAdded.Designer.cs">
+      <DependentUpon>201706061442005_AnotationAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061522502_FixForFK.cs" />
+    <Compile Include="Migrations\201706061522502_FixForFK.Designer.cs">
+      <DependentUpon>201706061522502_FixForFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061532348_FinalFixForONEtoOne.cs" />
+    <Compile Include="Migrations\201706061532348_FinalFixForONEtoOne.Designer.cs">
+      <DependentUpon>201706061532348_FinalFixForONEtoOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061805363_userFix.cs" />
+    <Compile Include="Migrations\201706061805363_userFix.Designer.cs">
+      <DependentUpon>201706061805363_userFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConfigurationMovieDB.cs" />
     <Compile Include="MoviesContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +117,29 @@
       <Project>{451b5106-3666-40bd-b41f-a130d377e283}</Project>
       <Name>MovieDb.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706061354374_remasteredDB.resx">
+      <DependentUpon>201706061354374_remasteredDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061406572_fix.resx">
+      <DependentUpon>201706061406572_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061439392_AnotationFixed.resx">
+      <DependentUpon>201706061439392_AnotationFixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061442005_AnotationAdded.resx">
+      <DependentUpon>201706061442005_AnotationAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061522502_FixForFK.resx">
+      <DependentUpon>201706061522502_FixForFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061532348_FinalFixForONEtoOne.resx">
+      <DependentUpon>201706061532348_FinalFixForONEtoOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061805363_userFix.resx">
+      <DependentUpon>201706061805363_userFix.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

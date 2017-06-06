@@ -10,14 +10,14 @@ using System.Web.Http.Cors;
 using WebAPI.Models.Comments;
 
 namespace WebAPI.Controllers
-{   
+{
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CommentsController : ApiController
     {
-        private readonly IRepository<Comments> comments;
-        private readonly IRepository<Users> users;
-        private readonly IRepository<Movies> movies;
-        public CommentsController(IRepository<Comments> comments,IRepository<Users> users,IRepository<Movies> movies)
+        private readonly IRepository<Comment> comments;
+        private readonly IRepository<User> users;
+        private readonly IRepository<Movie> movies;
+        public CommentsController(IRepository<Comment> comments, IRepository<User> users, IRepository<Movie> movies)
         {
             this.comments = comments;
             this.users = users;
@@ -44,11 +44,11 @@ namespace WebAPI.Controllers
                 return this.BadRequest("No such movie");
             }
 
-            var comment = new Comments
+            var comment = new Comment
             {
-                Comment = text,
-                UsersId = userId,
-                MoviesId = currentMovie.Id
+                CommentText = text,
+                UserId = userId,
+                MovieId = currentMovie.Id
             };
             try
             {
@@ -60,7 +60,7 @@ namespace WebAPI.Controllers
                 return this.BadRequest("Can`t save this comment");
             }
 
-            var lastCommentId = this.comments.All.Where(x=>x.UsersId==userId).OrderByDescending(x => x.CreatedOn).FirstOrDefault().Id;
+            var lastCommentId = this.comments.All.Where(x => x.UserId == userId).OrderByDescending(x => x.CreatedOn).FirstOrDefault().Id;
 
             return this.Ok(lastCommentId);
         }
@@ -86,7 +86,7 @@ namespace WebAPI.Controllers
 
             return this.Ok();
         }
-         
+
         public IHttpActionResult GetAllCommentsForAMovie(string id)
         {
             string imdbId = id;
@@ -108,16 +108,16 @@ namespace WebAPI.Controllers
             {
                 return this.BadRequest("no such user");
             }
-            var allMovies = this.comments.All.Where(x => x.UsersId== userId && x.isDeleted == false);
+            var allMovies = this.comments.All.Where(x => x.UserId == userId && x.isDeleted == false);
 
             return this.Ok(allMovies);
         }
 
-        private Users GetUser(int userId)
+        private User GetUser(int userId)
         {
             return this.users.All.Where(x => x.UsersId == userId).FirstOrDefault();
         }
-        private Movies GetMovie(string imdbId)
+        private Movie GetMovie(string imdbId)
         {
             return this.movies.All.Where(x => x.ImdbID == imdbId).FirstOrDefault();
         }

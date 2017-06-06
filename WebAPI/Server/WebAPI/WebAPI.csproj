@@ -214,7 +214,7 @@
     <Compile Include="Models\Comments\CreateCommentModel.cs" />
     <Compile Include="Models\Movies\LikeAMovieModel.cs" />
     <Compile Include="Models\Movies\MoviesCreateModel.cs" />
-    <Compile Include="Models\Users\LoginUserModel.cs" />
+    <Compile Include="Models\Users\RegisterUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

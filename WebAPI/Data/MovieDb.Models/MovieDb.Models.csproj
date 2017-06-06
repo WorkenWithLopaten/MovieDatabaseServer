@@ -73,12 +73,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MovieDb\Comments.cs" />
-    <Compile Include="MovieDb\Dislikes.cs" />
-    <Compile Include="MovieDb\Likes.cs" />
-    <Compile Include="MovieDb\Movies.cs" />
+    <Compile Include="MovieDb\Adress.cs" />
+    <Compile Include="MovieDb\City.cs" />
+    <Compile Include="MovieDb\Comment.cs" />
+    <Compile Include="MovieDb\Country.cs" />
+    <Compile Include="MovieDb\Dislike.cs" />
+    <Compile Include="MovieDb\Like.cs" />
+    <Compile Include="MovieDb\Movie.cs" />
+    <Compile Include="MovieDb\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MovieDb\Users.cs" />
+    <Compile Include="MovieDb\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

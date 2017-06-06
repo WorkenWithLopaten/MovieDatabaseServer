@@ -9,7 +9,7 @@ namespace WebAPI.Models.Comments
     {   
         public int UserId { get; set; }
 
-        public string ImdbId { get; set; }
+        public string MovieId { get; set; }
 
         public string Text { get; set; }
     }

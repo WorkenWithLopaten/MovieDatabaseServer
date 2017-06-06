@@ -2,9 +2,9 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    public class Comments
+    public class Comment
     {
-        public Comments()
+        public Comment()
         {
             this.CreatedOn = DateTime.Now;
             this.isDeleted = false;
@@ -14,18 +14,18 @@
             get; set;
         }
 
-        [MaxLength(500)]
-        public string Comment { get; set; }
+        public string CommentText { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
         public bool isDeleted { get; set; }
 
-        [Required]
-        public virtual int UsersId { get; set; }
+        public virtual int UserId { get; set; }
+        public virtual User User { get; set; }
 
-        [Required]
-        public virtual int MoviesId { get; set; }
+        public virtual int MovieId { get; set; }
+
+        public virtual Movie Movie { get; set; }
 
     }
 }

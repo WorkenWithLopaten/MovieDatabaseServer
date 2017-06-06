@@ -10,11 +10,11 @@ namespace WebAPI.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class MoviesController : ApiController
     {
-        private readonly IRepository<Movies> movies;
-        private readonly IRepository<Likes> likes;
-        private readonly IRepository<Dislikes> dislikes;
+        private readonly IRepository<Movie> movies;
+        private readonly IRepository<Like> likes;
+        private readonly IRepository<Dislike> dislikes;
 
-        public MoviesController(IRepository<Movies> movies,IRepository<Likes> likes,IRepository<Dislikes> dislikes)
+        public MoviesController(IRepository<Movie> movies, IRepository<Like> likes, IRepository<Dislike> dislikes)
         {
             this.movies = movies;
             this.likes = likes;
@@ -45,7 +45,7 @@ namespace WebAPI.Controllers
             {
                 try
                 {
-                    var movieToAdd = new Movies { Name = movie.Name, ImdbID = movie.ImdbID };
+                    var movieToAdd = new Movie { Name = movie.Name, ImdbID = movie.ImdbID };
                     this.movies.Add(movieToAdd);
                     this.movies.SaveChanges();
                 }
@@ -76,7 +76,7 @@ namespace WebAPI.Controllers
 
             try
             {
-                var isSucces=LikeOrDislikeAMovie(true, userId, currentMovie);
+                var isSucces = LikeOrDislikeAMovie(true, userId, currentMovie);
                 if (isSucces)
                 {
                     this.movies.Update(currentMovie);
@@ -86,7 +86,7 @@ namespace WebAPI.Controllers
                 {
                     return this.BadRequest("already liked or disliked");
                 }
-               
+
 
             }
             catch
@@ -125,7 +125,7 @@ namespace WebAPI.Controllers
             }
             return this.Ok(currentMovie.DislikesNumber);
         }
-        
+
         [HttpGet]
         public IHttpActionResult GetTopLikedMovies(int id)
         {
@@ -142,13 +142,13 @@ namespace WebAPI.Controllers
         }
 
 
-        private bool isAlreadyLikedOrDislikedAMovie(int userId, Movies movie)
+        private bool isAlreadyLikedOrDislikedAMovie(int userId, Movie movie)
         {
-            dynamic islikedOrDisliked = this.likes.All.Where(x => x.MoviesId == movie.Id && x.UsersId == userId).FirstOrDefault();
+            dynamic islikedOrDisliked = this.likes.All.Where(x => x.MovieId == movie.Id && x.UserId == userId).FirstOrDefault();
 
             if (islikedOrDisliked == null)
             {
-                islikedOrDisliked = this.dislikes.All.Where(x => x.MoviesId == movie.Id && x.UsersId == userId).FirstOrDefault();
+                islikedOrDisliked = this.dislikes.All.Where(x => x.MovieId == movie.Id && x.UserId == userId).FirstOrDefault();
             }
 
             if (islikedOrDisliked != null)
@@ -161,13 +161,13 @@ namespace WebAPI.Controllers
             }
         }
 
-        private bool LikeOrDislikeAMovie(bool isLike, int userId, Movies movie)
+        private bool LikeOrDislikeAMovie(bool isLike, int userId, Movie movie)
         {
             if (isLike)
             {
                 if (!isAlreadyLikedOrDislikedAMovie(userId, movie))
                 {
-                    this.likes.Add(new Likes { UsersId = userId, MoviesId = movie.Id });
+                    this.likes.Add(new Like { UserId = userId, MovieId = movie.Id });
                     return true;
                 }
             }
@@ -175,7 +175,7 @@ namespace WebAPI.Controllers
             {
                 if (!isAlreadyLikedOrDislikedAMovie(userId, movie))
                 {
-                    this.dislikes.Add(new Dislikes { UsersId = userId, MoviesId = movie.Id });
+                    this.dislikes.Add(new Dislike { UserId = userId, MovieId = movie.Id });
                     return true;
                 }
             }
