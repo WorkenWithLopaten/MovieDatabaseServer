@@ -104,6 +104,10 @@
     <Compile Include="Migrations\201706061805363_userFix.Designer.cs">
       <DependentUpon>201706061805363_userFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706070922525_MoviesNameLonger.cs" />
+    <Compile Include="Migrations\201706070922525_MoviesNameLonger.Designer.cs">
+      <DependentUpon>201706070922525_MoviesNameLonger.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConfigurationMovieDB.cs" />
     <Compile Include="MoviesContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -139,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706061805363_userFix.resx">
       <DependentUpon>201706061805363_userFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706070922525_MoviesNameLonger.resx">
+      <DependentUpon>201706070922525_MoviesNameLonger.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

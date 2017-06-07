@@ -1,0 +1,32 @@
+[
+  {
+    "UserName": "Trucnh",
+    "FirstName": "Trun",
+    "LastName": "Kostov",
+    "Email": "sdf@asdf.com",
+    "isMale": true,
+    "CityName": "Sofia",
+    "CountryName": "Bulgaria",
+    "Adress": "fsdfsdfs"
+  },
+  {
+    "UserName": "Stoqn86",
+    "FirstName": "Stoqn",
+    "LastName": "Valev",
+    "Email": "sdsdfsf@asdf.com",
+    "isMale": true,
+    "CityName": "Stara Zagora",
+    "CountryName": "Bulgaria",
+    "Adress": "ul Momin kamuk 5"
+  },
+  {
+    "UserName": "Goshko",
+    "FirstName": "Georgi",
+    "LastName": "Kostov",
+    "Email": "Gto@abv.bg",
+    "isMale": true,
+    "CityName": "Plovdiv",
+    "CountryName": "Bulgaria",
+    "Adress": "nqkude tam"
+  }
+]

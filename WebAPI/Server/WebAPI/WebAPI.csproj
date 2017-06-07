@@ -210,6 +210,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Importer\JsonImporter.cs" />
+    <Compile Include="Importer\JsonSerializer.cs" />
     <Compile Include="Models\Comments\DeleteCommentModel.cs" />
     <Compile Include="Models\Comments\CreateCommentModel.cs" />
     <Compile Include="Models\Movies\LikeAMovieModel.cs" />
@@ -245,6 +247,12 @@
     <Folder Include="Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="JsonFiles\Movies.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JsonFiles\Users.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\h.pubxml" />
   </ItemGroup>
   <PropertyGroup>

@@ -12,7 +12,7 @@ namespace MovieDb.Data.Migrations
 
         protected override void Seed(MovieDb.Data.MoviesContext context)
         {
-            //context.Users.AddOrUpdate(new Users { FirstName = "Vasil", LastName = "Kamburov", UserName = "Vasil", Password = "12345" });
+            
         }
     }
 }
