@@ -10,5 +10,7 @@ router.on({
     "home": generalControllerInstance.home,
     "register": userControllerInstance.register,
     "signup": userControllerInstance.signup,
-    "movies": moviesControllerInstance.getAll
+    "movies": moviesControllerInstance.getAll,
+    "requestAdd": moviesControllerInstance.requestAdd,
+    "addmovie": moviesControllerInstance.add
 }).resolve();

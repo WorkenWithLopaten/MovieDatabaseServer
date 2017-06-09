@@ -11,7 +11,6 @@ let userControllers = {
             },
             signup() {
                 //do logic....
-                console.log("sign up...")
                 location.hash = "#/home";
             }
         }

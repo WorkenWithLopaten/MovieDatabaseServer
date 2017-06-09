@@ -8,4 +8,13 @@ var movieService = {
     getMovie(movieObject) {
         // do logic for finding film
     },
+
+
+    addMovie(url, body) {
+        var header = {};
+        header["contentType"] = 'application/json';
+        var content = "application/json";
+
+        requester.post(url, header, body, content);
+    }
 };

@@ -2,107 +2,108 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>TheMovies</title>
-  <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="./build/css/styles.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./node_modules/toastr/build/toastr.css" />
-  <script src="./bower_components/jquery/dist/jquery.js"></script>
-  <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="./node_modules/toastr/build/toastr.min.js"></script>
+    <meta charset="UTF-8">
+    <title>TheMovies</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./build/css/styles.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./node_modules/toastr/build/toastr.css" />
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./node_modules/toastr/build/toastr.min.js"></script>
 </head>
 
 <body id="page">
-  <div class="container white-bg main-container">
-    <header id="header">
-      <div class="row">
-        <div class="top-nav clearfix">
-          <div class="col-sm-12">
-            <div class="collapse navbar-collapse custom-collapse">
-              <form class="navbar-form navbar-right">
-                <div class="form-group fixed-form">
-                  <div class="icon-group">
-                    <a href="#"><i class="social-icon fa fa-twitter-square" aria-hidden="true"></i></a>
-                    <a href="#"><i class="social-icon fa fa-facebook-square" aria-hidden="true"></i></a>
-                    <a href="#"><i class="social-icon fa fa-pinterest-square" aria-hidden="true"></i></a>
-                  </div>
-                  <input type="text" class="form-control search-input custom-input" placeholder="Search for movie...">
-                  <span class="custom-search glyphicon glyphicon-search"></span>
-                </div>
-              </form>
-            </div>
-            <!-- /.navbar-collapse -->
-            <nav class="navbar navbar-default">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".custom-collapse" aria-expanded="false">
+    <div class="container white-bg main-container">
+        <header id="header">
+            <div class="row">
+                <div class="top-nav clearfix">
+                    <div class="col-sm-12">
+                        <div class="collapse navbar-collapse custom-collapse">
+                            <form class="navbar-form navbar-right">
+                                <div class="form-group fixed-form">
+                                    <div class="icon-group">
+                                        <a href="#"><i class="social-icon fa fa-twitter-square" aria-hidden="true"></i></a>
+                                        <a href="#"><i class="social-icon fa fa-facebook-square" aria-hidden="true"></i></a>
+                                        <a href="#"><i class="social-icon fa fa-pinterest-square" aria-hidden="true"></i></a>
+                                    </div>
+                                    <input type="text" class="form-control search-input custom-input" placeholder="Search for movie...">
+                                    <span class="custom-search glyphicon glyphicon-search"></span>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <nav class="navbar navbar-default">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".custom-collapse" aria-expanded="false">
                                     <span class="sr-only">Toggle navigation</span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                <a class="logo-holder">
-                  <div class="logo-img"></div>
-                  <div class="logo-name">TheMovies</div>
-                  <div class="logo-slogan">Feel free to do everything you want!</div>
-                </a>
-              </div>
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse custom-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                  <li class="hidden-when-logged-in"><a href="#/login">Profile</a></li>
-                </ul>
-              </div>
-              <!-- /.navbar-collapse -->
-            </nav>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="main-nav clearfix">
-          <div class="col-sm-12">
-            <div class="collapse navbar-collapse custom-collapse">
-              <ul class="nav navbar-nav left">
-                <li class="active"><a href="#/home">Home</a></li>
-                <li><a href="#/movies">Movies</a></li>
-                <li><a href="#/register">Register</a></li>
-              </ul>
+                                <a class="logo-holder">
+                                    <div class="logo-img"></div>
+                                    <div class="logo-name">TheMovies</div>
+                                    <div class="logo-slogan">Feel free to do everything you want!</div>
+                                </a>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse custom-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="hidden-when-logged-in"><a href="#/requestAdd">Add a Movie!</a></li>
+                                    <li class="hidden-when-logged-in"><a href="#/login">Profile</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.navbar-collapse -->
+                        </nav>
+                    </div>
+                </div>
             </div>
-            <!-- /.navbar-collapse -->
-          </div>
+            <div class="row">
+                <div class="main-nav clearfix">
+                    <div class="col-sm-12">
+                        <div class="collapse navbar-collapse custom-collapse">
+                            <ul class="nav navbar-nav left">
+                                <li class="active"><a href="#/home">Home</a></li>
+                                <li><a href="#/movies">Movies</a></li>
+                                <li><a href="#/register">Register</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="container">
+
         </div>
-      </div>
-    </header>
-    <div id="container">
+        <footer id="footer">
 
+        </footer>
     </div>
-    <footer id="footer">
 
-    </footer>
-  </div>
+    <script src="./build/js/constants.min.js"></script>
 
-  <script src="./build/js/constants.min.js"></script>
+    <!--Frameworks-->
+    <script src="./bower_components/handlebars/handlebars.min.js"></script>
+    <script src="./node_modules/navigo/lib/navigo.js"></script>
 
-  <!--Frameworks-->
-  <script src="./bower_components/handlebars/handlebars.min.js"></script>
-  <script src="./node_modules/navigo/lib/navigo.js"></script>
+    <!--View controllers-->
+    <script src="./src/js/controllers/general-controller.js"></script>
+    <script src="./src/js/controllers/user-controller.js"></script>
+    <script src="./src/js/controllers/movie-controller.js"></script>
 
-  <!--View controllers-->
-  <script src="./src/js/controllers/general-controller.js"></script>
-  <script src="./src/js/controllers/user-controller.js"></script>
-  <script src="./src/js/controllers/movie-controller.js"></script>
+    <!--Helpers-->
+    <script src="./src/js/requesters.js"></script>
+    <script src="./src/js/templateLoader.js"></script>
 
-  <!--Services-->
-  <script src="./src/js/services/movie-service.js"></script>
+    <!--Services-->
+    <script src="./src/js/services/movie-service.js"></script>
 
-  <!--Helpers-->
-  <script src="./src/js/requesters.js"></script>
-  <script src="./src/js/templateLoader.js"></script>
-
-  <!--Initialize App-->
-  <script src="./src/js/app.js"></script>
+    <!--Initialize App-->
+    <script src="./src/js/app.js"></script>
 
 </body>
 

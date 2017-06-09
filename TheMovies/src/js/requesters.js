@@ -1,4 +1,4 @@
-let requester = {
+var requester = {
     get(url) {
         return new Promise((resolve, reject) => {
             $.ajax({
@@ -45,21 +45,21 @@ let requester = {
             });
         });
     },
-    postJSON(url, body, options) {
-        options = options || {};
-        return new Promise((resolve, reject) => {
-            var headers = options.headers || {};
-
-            $.ajax({
-                url,
-                headers,
-                method: "POST",
-                contentType: "application/json",
-                data: JSON.stringify(body),
-                success(response) {
-                    resolve(response);
-                }
-            });
-        });
+    post(url, headers, body, contentType) {
+        return requestSql(url, 'POST', headers, JSON.stringify(body), contentType);
     }
 };
+
+function requestSql(url, type, headers, body, contentType) {
+    const promise = new Promise((resolve, reject) => $.ajax({
+        url,
+        type,
+        data: body,
+        contentType,
+        headers,
+        success: resolve,
+        error: reject
+    }));
+
+    return promise;
+}
