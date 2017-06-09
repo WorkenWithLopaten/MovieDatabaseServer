@@ -5,6 +5,7 @@ using MovieDb.Data;
 using WebAPI.Importer;
 using WebAPI.App_Start;
 using System.Configuration;
+using PDFReportGeneration;
 
 [assembly: OwinStartup(typeof(WebAPI.Startup))]
 namespace WebAPI
@@ -22,6 +23,10 @@ namespace WebAPI
                 var jsonImporter = new JsonImporter(context);
                 jsonImporter.ImportMovies();
                 jsonImporter.ImportUsers();
+            }
+            if (bool.Parse(ConfigurationManager.AppSettings["generateReport"]))
+            {
+                PdfReporter.GeneratePDFAggregatedSalesReport();
             }
         }
     }
