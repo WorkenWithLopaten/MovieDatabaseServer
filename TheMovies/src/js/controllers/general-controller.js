@@ -1,31 +1,33 @@
 let generalControllers = {
-    get(templates) {
+    get(userService, templates) {
         return {
             home() {
-
-                $('#container').html("Home page");
-
-                // Promise.all([
-                //     blogService.getAllCategories(),
-                //     blogService.getAllPosts(),
-                //     templates.get('home')
-                // ])
-                // .then(([categories, posts, template]) => {
-                //     let compiledTemplate = Handlebars.compile(template),
-                //         data = {},
-                //         html;
-
-                //     data.categories = categories.val();
-                //     data.posts = posts.val();
-                //     html = compiledTemplate(data);
-                //     $('#container').html(html);
-
-                //     $('.main-nav li.active').removeClass('active');
-                //     $('a[href^="#/home"]').parent('li').addClass('active');
-                //     window.scrollTo(0, 0);
-                // })
-                // .catch((error) => console.log(error));
+                Promise.all([
+                        templates.get('home'),
+                        userService.getAllUsers()
+                    ])
+                    .then(([template, users]) => {
+                        let compiledTemplate = Handlebars.compile(template);
+                        console.log(users);
+                        let html = compiledTemplate(users);
+                        $('#container').html(html);
+                    });
             }
         }
     }
 };
+
+$('#container').on('click', '#user-container', function() {
+    var $user = $(this);
+    var userId = $user.attr('user-id');
+
+    localStorage.userId = userId;
+
+    var userUsername = $user.find('.username-name').html();
+
+    localStorage.username = userUsername;
+
+    console.log(userId);
+
+    $('.logged-user-demo').html('Welcome, ' + localStorage.username + '!');
+})

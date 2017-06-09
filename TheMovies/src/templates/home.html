@@ -1,0 +1,24 @@
+<h1>Choose User</h1>
+<div id="users">
+    {{#this}}
+    <div id="user-container" user-id="{{Id}}">
+        <ul>
+            <li id="user-info">
+                Username: <strong class="username-name" id="user-color">{{UserName}}</strong>
+            </li>
+            <li id="user-info">
+                FirstName: <strong id="user-color">{{FirstName}}</strong>
+            </li>
+            <li id="user-info">
+                LastName: <strong id="user-color">{{LastName}}</strong>
+            </li>
+            <li id="user-info">
+                Email: <strong id="user-color">{{Email}}</strong>
+            </li>
+            <li id="user-info">
+                Country:<strong id="user-color">{{CountryName}}</strong>
+            </li>
+        </ul>
+    </div>
+    {{/this}}
+</div>

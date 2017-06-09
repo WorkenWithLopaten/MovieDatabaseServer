@@ -17,6 +17,7 @@ namespace WebAPI.Controllers
         private readonly IRepository<Comment> comments;
         private readonly IRepository<User> users;
         private readonly IRepository<Movie> movies;
+
         public CommentsController(IRepository<Comment> comments, IRepository<User> users, IRepository<Movie> movies)
         {
             this.comments = comments;

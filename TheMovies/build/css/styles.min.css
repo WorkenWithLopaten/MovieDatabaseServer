@@ -584,3 +584,80 @@ body .single-post-image.thumbnail img {
     font-size: 3rem;
     margin-left: 8%;
 }
+
+#movie-info {
+    width: 300px;
+}
+
+#user-color {
+    color: mediumseagreen;
+}
+
+#user-info {
+    width: 100px;
+    list-style: none;
+}
+
+#user-container :hover {
+    color: darkblue;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#users {
+    width: 100%;
+}
+
+#user-container {
+    width: 30%;
+    background: lightblue;
+    border: 2px solid black;
+    margin-right: 5%;
+    color: lightseagreen;
+    padding-right: 5%;
+    border-radius: 5%;
+}
+
+#movie {
+    width: 30%;
+    padding-right: 10%;
+    color: lightseagreen;
+}
+
+#movies-container {
+    padding-top: 2%;
+    padding-bottom: 1%;
+    width: 100%;
+    display: inline-flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+#title-movie {
+    color: lightslategray;
+}
+
+.clickable {
+    list-style: none;
+}
+
+#users {
+    padding-top: 2%;
+    padding-bottom: 1%;
+    width: 100%;
+    display: inline-flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.logged-user-demo {
+    color: lightseagreen;
+    padding-top: 12%;
+    font-weight: 700;
+}
+
+#add-movie {
+    font-weight: 700;
+    font-size: 110%;
+    color: black;
+}

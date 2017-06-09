@@ -1,0 +1,19 @@
+<div id="movies-container">
+    {{#this}}
+    <div id="movie">
+        <label id="movie-info" for="usernamesignup" class="uname" data-icon="u"> Name:  
+                <span id="title-movie">{{Name}}</span>
+        </label>
+
+        <li class="clickable" data-id="{{Id}}">
+            <a id="like" class="fa fa-thumbs-o-up fa-2x" aria-hidden="true"></a> &nbsp; Likes:
+            <strong id="number-of-likes">{{LikesNumber}}</strong>
+        </li>
+
+        <li class="clickable" data-id="{{Id}}">
+            <a id="dislike" class="fa fa-thumbs-o-down fa-2x" aria-hidden="true"></a> &nbsp; Dislikes:
+            <strong id="number-of-dislikes">{{DislikesNumber}}</strong>
+        </li>
+    </div>
+    {{/this}}
+</div>

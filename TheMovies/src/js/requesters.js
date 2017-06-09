@@ -12,38 +12,8 @@ var requester = {
             });
         });
     },
-    getJSON(url) {
-        return new Promise((resolve, reject) => {
-            $.ajax({
-                url,
-                method: "GET",
-                contentType: "application/json",
-                success(response) {
-                    resolve(response);
-                },
-                error(response) {
-                    console.log("error", response);
-
-                }
-            });
-        });
-    },
-    putJSON(url, body, options) {
-        options = options || {};
-        return new Promise((resolve, reject) => {
-            let headers = options.headers || {};
-
-            $.ajax({
-                url,
-                headers,
-                method: "PUT",
-                contentType: "application/json",
-                data: JSON.stringify(body),
-                success(response) {
-                    resolve(response);
-                }
-            });
-        });
+    getSql(url, headers) {
+        return requestSql(url, 'GET', headers);
     },
     post(url, headers, body, contentType) {
         return requestSql(url, 'POST', headers, JSON.stringify(body), contentType);
