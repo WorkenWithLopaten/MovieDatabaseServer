@@ -239,6 +239,10 @@
       <Project>{451b5106-3666-40bd-b41f-a130d377e283}</Project>
       <Name>MovieDb.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Reporter\PdfReporter.csproj">
+      <Project>{927b2681-741c-4ebe-bfdc-ed8d0414943d}</Project>
+      <Name>PdfReporter</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -1,14 +1,14 @@
-﻿
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using MovieDb.Data;
-using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-
-namespace PDFReportGeneration
+﻿namespace PDFReportGeneration
 {
+
+    using iTextSharp.text;
+    using iTextSharp.text.pdf;
+    using MovieDb.Data;
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+    using System.Web.Hosting;
     public static class PdfReporter
     {
         private const float FontSize = 10f;
@@ -16,7 +16,9 @@ namespace PDFReportGeneration
 
         public static void GeneratePDFAggregatedSalesReport()
         {
-            string executionFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            
+            //string executionFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string executionFolder= HostingEnvironment.ApplicationPhysicalPath;
             string salesReportFile = Path.Combine(executionFolder, "UsersByCityReport.pdf");
 
             var fs = new FileStream(salesReportFile, FileMode.Create);
