@@ -9,6 +9,8 @@
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<MoviesContext, ConfigurationMovieDB>());
             new MoviesContext().Database.Initialize(true);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ActorsContext, ConfigurationActors>());
+            new ActorsContext().Database.Initialize(true);
         }
     }
 }
