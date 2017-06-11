@@ -1,41 +1,100 @@
-﻿//namespace WebAPI.Controllers
-//{
-//    using Models.Users;
-//    using MovieDb.Data;
-//    using MovieDb.Models;
-//    using System;
-//    using System.Data.Entity;
-//    using System.Linq;
-//    using System.Net.Http;
-//    using System.Web.Http;
-//    using System.Web.Http.Cors;
-//    using SqLite;
+﻿namespace WebAPI.Controllers
+{
+    using MovieDb.Data;
+    using System.Linq;
+    using System.Web.Http;
+    using System.Web.Http.Cors;
+    using SqlLiteData.Models;
+    using System.Collections.Generic;
+    using Models.Actors;
+    using Models.Movies;
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class ActorsController : ApiController
+    {
+        private IRepository<Actors> actors;
+        private IRepository<MoviesLite> movies;
+        public ActorsController(IRepository<Actors> actors, IRepository<MoviesLite> movies)
 
-//    [EnableCors(origins: "*", headers: "*", methods: "*")]
-//    public class ActorsController : ApiController
-//    {
-//        private MoviesEntities2hh db;
-//        public ActorsController()
+        {
+            this.actors = actors;
+            this.movies = movies;
+        }
 
-//        {
-//            this.db = new MoviesEntities2hh();
-//        }
+        [HttpGet]
+        public IHttpActionResult All()
+        {
+            var actors = this.actors.All.ToList();
 
-//        [HttpGet]
-//        public IHttpActionResult All()
-//        {
-//            var actors = this.db.Actors.ToList();
+            return this.Ok(actors.Select(x=>x.Name));
+        }
 
-//            return this.Ok(actors);
-//        }
+        [HttpGet]
+        public IHttpActionResult AllMoviesForActorId(int id)
+        {
+            ICollection<MoviesLite> movies = this.actors.All.Where(x => x.Id == id).SelectMany(y => y.Movies).ToList();
 
-//        [HttpGet]
-//        public IHttpActionResult AllMoviesForActorId(int id)
-//        {
-//            var actors = this.db.ActorsMovies.Where(x => x.ActorsId == id).Select(x => x.Movies.Name);
+            return this.Ok(movies.Select(x=>x.Name));
+        }
 
-//            return this.Ok(actors);
-//        }
+        [HttpPost]
+        public IHttpActionResult Add(ActorAddModel actor)
+        {
+            var actors = this.actors.All.Where(x => x.Name == actor.Name).FirstOrDefault();
+            if (actors != null)
+            {
+                return this.BadRequest("Already have this actor");
+            }
+            var actorToAdd = new Actors() { Name = actor.Name };
+            try
+            {
+                this.actors.Add(actorToAdd);
+                this.actors.SaveChanges();
+            }
+            catch
+            {
+                return this.BadRequest("Ups something went wrong");
+            }
 
-//    }
-//}
+            return this.Ok("Actor Added successfully");
+        }
+
+        [HttpPost]
+        public IHttpActionResult Delete(ActorAddModel actor)
+        {
+            var actors = this.actors.All.Where(x => x.Name == actor.Name).FirstOrDefault();
+            if (actors == null)
+            {
+                return this.BadRequest("No such actor");
+            }
+            try
+            {
+                this.actors.Delete(actors);
+                this.actors.SaveChanges();
+            }
+            catch
+            {
+                return this.BadRequest("Ups something went wrong");
+            }
+
+            return this.Ok("Actor Deleted successfully");
+        }
+
+
+        [HttpPost]
+        public IHttpActionResult GetAllActorsForMovieName(MoviesCreateModel movie)
+        {
+            var movies = this.movies.All.Where(x => x.Name.Contains(movie.Name)).FirstOrDefault();
+            if (movies == null)
+            {
+                return this.BadRequest("No such movie");
+            }
+
+            var actors = movies.Actors.Select(x => x.Name);
+
+            return this.Ok(actors);
+        }
+
+
+
+    }
+}

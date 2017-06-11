@@ -11,6 +11,9 @@ namespace WebAPI.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using MovieDb.Data;
+    using MovieDb.Models;
+    using SqlLiteData.Models;
+    using SqlLiteData;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -65,8 +68,23 @@ namespace WebAPI.App_Start
                 .Bind<IMoviesContext>()
                 .To<MoviesContext>()
                 .InRequestScope();
+            kernel
+               .Bind<IActorsContext>()
+               .To<ActorsContext>()
+               .InRequestScope();
 
-            kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
+            kernel.Bind(typeof(IRepository<Movie>)).To(typeof(EfGenericRepository<Movie>));
+            kernel.Bind(typeof(IRepository<Adress>)).To(typeof(EfGenericRepository<Adress>));
+            kernel.Bind(typeof(IRepository<City>)).To(typeof(EfGenericRepository<City>));
+            kernel.Bind(typeof(IRepository<Comment>)).To(typeof(EfGenericRepository<Comment>));
+            kernel.Bind(typeof(IRepository<Country>)).To(typeof(EfGenericRepository<Country>));
+            kernel.Bind(typeof(IRepository<Dislike>)).To(typeof(EfGenericRepository<Dislike>));
+            kernel.Bind(typeof(IRepository<Like>)).To(typeof(EfGenericRepository<Like>));
+            kernel.Bind(typeof(IRepository<User>)).To(typeof(EfGenericRepository<User>));
+            kernel.Bind(typeof(IRepository<UserData>)).To(typeof(EfGenericRepository<UserData>));
+            kernel.Bind(typeof(IRepository<Actors>)).To(typeof(EfGenericAndSqlLite<Actors>));
+            kernel.Bind(typeof(IRepository<MoviesLite>)).To(typeof(EfGenericAndSqlLite<MoviesLite>));
+
         }        
     }
 }
