@@ -14,6 +14,7 @@ namespace WebAPI.App_Start
     using MovieDb.Models;
     using SqlLiteData.Models;
     using SqlLiteData;
+    using PostgreData.Models;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -72,6 +73,10 @@ namespace WebAPI.App_Start
                .Bind<IActorsContext>()
                .To<ActorsContext>()
                .InRequestScope();
+            kernel
+               .Bind<ICinemaContext>()
+               .To<CinemaContext>()
+               .InRequestScope();
 
             kernel.Bind(typeof(IRepository<Movie>)).To(typeof(EfGenericRepository<Movie>));
             kernel.Bind(typeof(IRepository<Adress>)).To(typeof(EfGenericRepository<Adress>));
@@ -84,6 +89,8 @@ namespace WebAPI.App_Start
             kernel.Bind(typeof(IRepository<UserData>)).To(typeof(EfGenericRepository<UserData>));
             kernel.Bind(typeof(IRepository<Actors>)).To(typeof(EfGenericAndSqlLite<Actors>));
             kernel.Bind(typeof(IRepository<MoviesLite>)).To(typeof(EfGenericAndSqlLite<MoviesLite>));
+            kernel.Bind(typeof(IRepository<CinemaCity>)).To(typeof(EfGenericPostgre<CinemaCity>));
+            kernel.Bind(typeof(IRepository<Cinema>)).To(typeof(EfGenericPostgre<Cinema>));
 
         }        
     }

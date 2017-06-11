@@ -240,6 +240,7 @@
     <Compile Include="App_Start\DbConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CinemaController.cs" />
     <Compile Include="Controllers\ActorsController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
@@ -251,6 +252,10 @@
     <Compile Include="Importer\JsonSerializer.cs" />
     <Compile Include="Models\Actors\ActorAddModel.cs" />
     <Compile Include="Models\Actors\ActorToMovieModel.cs" />
+    <Compile Include="Models\Cinema\CinemaCityModel.cs" />
+    <Compile Include="Models\Cinema\CinemaToAddModel.cs" />
+    <Compile Include="Models\Cinema\CinemaToCityModel.cs" />
+    <Compile Include="Models\Cinema\CinemaToDeleteModel.cs" />
     <Compile Include="Models\Comments\DeleteCommentModel.cs" />
     <Compile Include="Models\Comments\CreateCommentModel.cs" />
     <Compile Include="Models\Movies\LikeAMovieModel.cs" />
