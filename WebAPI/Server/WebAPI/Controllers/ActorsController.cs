@@ -94,6 +94,45 @@
             return this.Ok(actors);
         }
 
+        [HttpPost]
+        public IHttpActionResult ConnectActorToMovie(ActorToMovieModel data)
+        {
+            var actor= this.actors.All.Where(x => x.Name.Contains(data.ActorName)).FirstOrDefault();
+            var movie = this.movies.All.Where(x => x.Name.Contains(data.MovieName)).FirstOrDefault();
+
+            if (actor == null)
+            {
+                return this.BadRequest("Actor doesn`t exist");
+            }
+            else if (movie == null)
+            {
+                return this.BadRequest("Movie doesn`t exist");
+            }
+            else
+            {
+                //first check if exists connection
+                var alreadyExists = movie.Actors.Select(x => x.Name).Where(y => y.Contains(data.ActorName)).FirstOrDefault();
+
+                if (alreadyExists != null)
+                {
+                    return this.BadRequest("Already connected");
+                }
+                else
+                {
+                    try
+                    {
+                        movie.Actors.Add(actor);
+                        this.movies.SaveChanges();
+                        return this.Ok("Actor added successfully");
+                    }
+                    catch
+                    {
+                        return this.BadRequest("Ups something went wrong");
+                    }
+                }
+            }
+        }
+
 
 
     }

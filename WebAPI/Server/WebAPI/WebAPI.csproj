@@ -238,6 +238,7 @@
     <Compile Include="Importer\JsonImporter.cs" />
     <Compile Include="Importer\JsonSerializer.cs" />
     <Compile Include="Models\Actors\ActorAddModel.cs" />
+    <Compile Include="Models\Actors\ActorToMovieModel.cs" />
     <Compile Include="Models\Comments\DeleteCommentModel.cs" />
     <Compile Include="Models\Comments\CreateCommentModel.cs" />
     <Compile Include="Models\Movies\LikeAMovieModel.cs" />
