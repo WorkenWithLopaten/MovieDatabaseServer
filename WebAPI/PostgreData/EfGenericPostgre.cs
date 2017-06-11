@@ -5,9 +5,9 @@ using System.Data.Entity;
 
 namespace SqlLiteData
 {
-    public class EfGenericAndSqlLite<T> : IRepository<T> where T : class
+    public class EfGenericPostgre<T> : IRepository<T> where T : class
     {
-        public EfGenericAndSqlLite(ICinemaContext context)
+        public EfGenericPostgre(ICinemaContext context)
         {
             if (context == null)
             {
