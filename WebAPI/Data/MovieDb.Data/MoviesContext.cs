@@ -2,7 +2,6 @@
 {
     using MovieDb.Models;
     using System.Data.Entity;
-    using System;
     using System.Data.Entity.Infrastructure.Annotations;
     using System.ComponentModel.DataAnnotations.Schema;
     public class MoviesContext : DbContext, IMoviesContext

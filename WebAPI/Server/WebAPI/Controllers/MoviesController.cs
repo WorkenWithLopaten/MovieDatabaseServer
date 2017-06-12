@@ -28,19 +28,18 @@ namespace WebAPI.Controllers
 
             return this.Ok(res.Select(
                 x =>
-                new
+                new TestingMovieModel
                 {
-                    x.Name,
-                    x.LikesNumber,
-                    x.DislikesNumber,
-                    x.Id
+                    Name = x.Name,
+                    Likes = x.LikesNumber,
+                    Dislikes = x.DislikesNumber,
+                    Id = x.Id
                 }
                 ));
         }
 
         public IHttpActionResult GetById(int id)
         {
-
             var res = this.movies.All.Where(x => x.Id == id).FirstOrDefault();
 
             return this.Ok(res);
@@ -99,8 +98,6 @@ namespace WebAPI.Controllers
                 {
                     return this.BadRequest("already liked or disliked");
                 }
-
-
             }
             catch
             {
@@ -116,7 +113,7 @@ namespace WebAPI.Controllers
             var currentMovie = this.movies.All.Where(x => x.Id == movieId).FirstOrDefault();
             if (currentMovie == null)
             {
-                return null;
+                return this.BadRequest("No such movie");
             }
             var currentUser = this.users.All.Where(x => x.Id == userId).FirstOrDefault();
             if (currentUser == null)
@@ -151,33 +148,14 @@ namespace WebAPI.Controllers
             var res = this.movies.All.Where(x => x.LikesNumber > 0).OrderByDescending(x => x.LikesNumber).Take(number).ToList();
             return this.Ok(res.Select(
                 x =>
-                new
+                new TestingMovieModel
                 {
-                    x.Name,
-                    x.LikesNumber,
-                    x.DislikesNumber,
-                    x.Id
+                    Name = x.Name,
+                    Likes = x.LikesNumber,
+                    Dislikes = x.DislikesNumber,
+                    Id = x.Id
                 }
                 ));
-        }
-
-        [HttpGet]
-        public IHttpActionResult GetFilmsByName(string input)
-        {
-            var res = this.movies.All
-                .Where(film => film.Name.ToLower().Contains(input.ToLower()))
-                .OrderBy(x => x.Name).ToList();
-
-            return this.Ok(res.Select(
-               x =>
-               new
-               {
-                   x.Name,
-                   x.LikesNumber,
-                   x.DislikesNumber,
-                   x.Id
-               }
-               ));
         }
 
         [HttpGet]

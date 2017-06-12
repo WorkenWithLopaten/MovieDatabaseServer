@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{2FF1833C-2630-4225-B883-A99BFF22CD1E}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reporter", "Reporter", "{154B5EE2-692E-44C4-802B-0CC8CCC26D66}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfReporter", "Reporter\PdfReporter.csproj", "{927B2681-741C-4EBE-BFDC-ED8D0414943D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI.Tests", "WebAPI.Tests\WebAPI.Tests.csproj", "{97B3A9EE-1A53-4224-B59B-6922F619EDE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{927B2681-741C-4EBE-BFDC-ED8D0414943D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{927B2681-741C-4EBE-BFDC-ED8D0414943D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{927B2681-741C-4EBE-BFDC-ED8D0414943D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97B3A9EE-1A53-4224-B59B-6922F619EDE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97B3A9EE-1A53-4224-B59B-6922F619EDE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97B3A9EE-1A53-4224-B59B-6922F619EDE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97B3A9EE-1A53-4224-B59B-6922F619EDE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

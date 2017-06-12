@@ -3,7 +3,6 @@
     using System;
     using System.Data.Entity;
     using System.Linq;
-    using System.Threading.Tasks;
 
     public class EfGenericRepository<T> : IRepository<T> where T : class
     {

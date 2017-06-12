@@ -206,17 +206,19 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\TestingModel.cs" />
+    <Compile Include="Controllers\TestingMovieModel.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Importer\JsonImporter.cs" />
     <Compile Include="Importer\JsonSerializer.cs" />
-    <Compile Include="Models\Comments\DeleteCommentModel.cs" />
-    <Compile Include="Models\Comments\CreateCommentModel.cs" />
-    <Compile Include="Models\Movies\LikeAMovieModel.cs" />
-    <Compile Include="Models\Movies\MoviesCreateModel.cs" />
-    <Compile Include="Models\Users\RegisterUser.cs" />
+    <Compile Include="JsonFiles\Models\Comments\DeleteCommentModel.cs" />
+    <Compile Include="JsonFiles\Models\Comments\CreateCommentModel.cs" />
+    <Compile Include="JsonFiles\Models\Movies\LikeAMovieModel.cs" />
+    <Compile Include="JsonFiles\Models\Movies\MoviesCreateModel.cs" />
+    <Compile Include="JsonFiles\Models\Users\RegisterUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
