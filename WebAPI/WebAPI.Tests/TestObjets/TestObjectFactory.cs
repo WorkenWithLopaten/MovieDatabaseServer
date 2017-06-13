@@ -1,4 +1,5 @@
 ﻿using MovieDb.Models;
+using SqlLiteData.Models;
 using System;
 
 namespace WebAPI.Test.TestObjects
@@ -124,6 +125,26 @@ namespace WebAPI.Test.TestObjects
                    Id = i
                }
                );
+            }
+
+            return repository;
+        }
+
+        public static InMemoryRepository<MoviesLite> GetMoviesLiteRepository()
+        {
+            var repository = new InMemoryRepository<MoviesLite>();
+
+            for (int i = 0; i < 10; i++)
+            {
+
+                var movieLite = new MoviesLite()
+                {
+                    Name = "Movie " + i,
+                    Id = i,
+                };
+                movieLite.Actors.Add(new Actors() { Name = "Gosho" + i });
+                repository.Add(movieLite);
+
             }
 
             return repository;

@@ -147,10 +147,14 @@ namespace WebAPI.Tests.CommentsControllerTests
                 MovieId = 1
             };
 
-           // commentRepoMocked.Setup(x => x.All).Returns(ne);
+            var resultOfAll = new List<Comment>();
+            resultOfAll.Add(comment);
+
+            commentRepoMocked.Setup(x => x.All).Returns(resultOfAll.AsQueryable());
 
             var controller = new CommentsController(commentRepoMocked.Object, 
                 userRepo, movieRepo);
+
 
             var commentModel = new CreateCommentModel
             {

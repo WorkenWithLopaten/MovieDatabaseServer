@@ -1,11 +1,11 @@
 ﻿using System.Linq;
-using System.Web.Http.Results;
 using MovieDb.Data;
 using NUnit.Framework;
 using WebAPI.Controllers;
 using WebAPI.Models.Users;
 using WebAPI.Test.TestObjects;
 using MovieDb.Models;
+using System.Web.Http.Results;
 
 namespace WebAPI.Tests
 {

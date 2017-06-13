@@ -16,9 +16,10 @@ namespace WebAPI.Tests.MovieControllerTests
             var likesRepo = TestObjectFactory.GetLikesRepository();
             var dislikesRepo = TestObjectFactory.GetDislikesRepository();
             var moviesRepo = TestObjectFactory.GetMovieRepository();
+            var moviesLiteRepo = TestObjectFactory.GetMoviesLiteRepository();
 
             var controller = new MoviesController(moviesRepo, likesRepo, dislikesRepo,
-                userRepo);
+                userRepo, moviesLiteRepo);
 
             var result = controller.GetTopLikedMovies(3);
 
@@ -49,9 +50,10 @@ namespace WebAPI.Tests.MovieControllerTests
             var likesRepo = TestObjectFactory.GetLikesRepository();
             var dislikesRepo = TestObjectFactory.GetDislikesRepository();
             var moviesRepo = TestObjectFactory.GetMovieRepository();
+            var moviesLiteRepo = TestObjectFactory.GetMoviesLiteRepository();
 
             var controller = new MoviesController(moviesRepo, likesRepo, dislikesRepo,
-                userRepo);
+                userRepo, moviesLiteRepo);
 
             var result = controller.GetTopLikedMovies(10);
 

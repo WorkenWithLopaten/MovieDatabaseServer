@@ -20,9 +20,10 @@ namespace WebAPI.Tests.MovieControllerTests
             var likesRepo = TestObjectFactory.GetLikesRepository();
             var dislikesRepo = TestObjectFactory.GetDislikesRepository();
             var moviesRepo = TestObjectFactory.GetMovieRepository();
+            var moviesLiteRepo = TestObjectFactory.GetMoviesLiteRepository();
 
             var controller = new MoviesController(moviesRepo, likesRepo, dislikesRepo,
-                userRepo);
+                userRepo, moviesLiteRepo);
 
             var model = new LikeAMovieModel()
             {
@@ -46,9 +47,10 @@ namespace WebAPI.Tests.MovieControllerTests
             var likesRepo = TestObjectFactory.GetLikesRepository();
             var dislikesRepo = TestObjectFactory.GetDislikesRepository();
             var moviesRepo = TestObjectFactory.GetMovieRepository();
+            var moviesLiteRepo = TestObjectFactory.GetMoviesLiteRepository();
 
             var controller = new MoviesController(moviesRepo, likesRepo, dislikesRepo,
-                userRepo);
+                userRepo, moviesLiteRepo);
 
             var model = new LikeAMovieModel()
             {
@@ -70,9 +72,10 @@ namespace WebAPI.Tests.MovieControllerTests
             var likesRepo = TestObjectFactory.GetLikesRepository();
             var dislikesRepo = TestObjectFactory.GetDislikesRepository();
             var moviesRepo = TestObjectFactory.GetMovieRepository();
+            var moviesLiteRepo = TestObjectFactory.GetMoviesLiteRepository();
 
             var controller = new MoviesController(moviesRepo, likesRepo, dislikesRepo,
-                userRepo);
+                userRepo, moviesLiteRepo);
 
             var model = new LikeAMovieModel()
             {
@@ -100,9 +103,10 @@ namespace WebAPI.Tests.MovieControllerTests
             var likesRepo = TestObjectFactory.GetLikesRepository();
             var dislikesRepo = TestObjectFactory.GetDislikesRepository();
             var moviesRepo = TestObjectFactory.GetMovieRepository();
+            var moviesLiteRepo = TestObjectFactory.GetMoviesLiteRepository();
 
             var controller = new MoviesController(moviesRepo, likesRepo, dislikesRepo,
-                userRepo);
+                userRepo, moviesLiteRepo);
 
             var model = new LikeAMovieModel()
             {
@@ -126,9 +130,10 @@ namespace WebAPI.Tests.MovieControllerTests
             var likesRepo = TestObjectFactory.GetLikesRepository();
             var dislikesRepo = TestObjectFactory.GetDislikesRepository();
             var moviesRepo = TestObjectFactory.GetMovieRepository();
+            var moviesLiteRepo = TestObjectFactory.GetMoviesLiteRepository();
 
             var controller = new MoviesController(moviesRepo, likesRepo, dislikesRepo,
-                userRepo);
+                userRepo, moviesLiteRepo);
 
             var model = new LikeAMovieModel()
             {

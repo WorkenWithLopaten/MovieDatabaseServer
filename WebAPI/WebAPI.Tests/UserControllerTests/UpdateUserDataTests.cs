@@ -1,6 +1,7 @@
 ﻿using MovieDb.Data;
 using MovieDb.Models;
 using NUnit.Framework;
+using System.Linq;
 using System.Web.Http.Results;
 using WebAPI.Controllers;
 using WebAPI.Models.Users;
@@ -103,7 +104,7 @@ namespace WebAPI.Tests.UserControllerTests
         {
             const string InvalidData = "InvalidData";
             const string UserName = "User 1";
-            const string FirstName = "UserFirstNew 1";
+            const string FirstName = "UserFirstNew 1asdfasdf asdf asdf sadflsdgjmdfkjgdklfjgdskfljgdlkfgf sad fsad fsad fasd sadf sadf asdf sad fasdf sadf sdf sad fsf dsd ";
             const string LastName = "UserLastNew 1";
             const string Email = "EmailNew 1";
             const string CityName = "CityNew 1";
@@ -111,10 +112,31 @@ namespace WebAPI.Tests.UserControllerTests
 
             var dbContext = new MoviesContext();
 
-            dbContext.Users.Add(new User()
+            if (dbContext.Users.Where(x => x.UserName == UserName).FirstOrDefault()==null)
             {
-                UserName = UserName
-            });
+
+                var newCountry = new Country() { Name = CountryName };
+                var newCity=new City() {Name= CityName };
+                newCity.Country = newCountry;
+                var newAddress = new Adress() { AdressText = "SomeAdress" };
+                newAddress.City = newCity;
+                var userData = new UserData() { Email = Email,
+                                                Adress = newAddress,
+                                                FirstName = "Valid Name",
+                                                LastName = LastName,
+                                                isMale = false };
+
+                var newUser= new User()
+                {
+                    UserName = UserName,
+                    UserData= userData
+                };
+
+                dbContext.Users.Add(newUser);
+
+                dbContext.SaveChanges();
+
+            }
 
             var userRepostiroyReal = new EfGenericRepository<User>(dbContext);
         
