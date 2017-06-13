@@ -1,5 +1,6 @@
 ﻿using MovieDb.Data;
 using MovieDb.Models;
+using SqlLiteData.Models;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -14,13 +15,15 @@ namespace WebAPI.Controllers
         private readonly IRepository<Like> likes;
         private readonly IRepository<Dislike> dislikes;
         private readonly IRepository<User> users;
+        private readonly IRepository<MoviesLite> moviesLite;
 
-        public MoviesController(IRepository<Movie> movies, IRepository<Like> likes, IRepository<Dislike> dislikes, IRepository<User> users)
+        public MoviesController(IRepository<Movie> movies, IRepository<Like> likes, IRepository<Dislike> dislikes,IRepository<User> users,IRepository<MoviesLite> moviesLite)
         {
             this.movies = movies;
             this.likes = likes;
             this.dislikes = dislikes;
             this.users = users;
+            this.moviesLite = moviesLite;
         }
         public IHttpActionResult GetAll()
         {
@@ -48,13 +51,19 @@ namespace WebAPI.Controllers
         public IHttpActionResult Add(MoviesCreateModel movie)
         {
             var currentMovie = this.movies.All.Where(x => x.Name == movie.Name).FirstOrDefault();
+            var moviesLiteMovie=this.moviesLite.All.Where(x => x.Name == movie.Name).FirstOrDefault();
+
             if (currentMovie == null)
             {
                 try
                 {
-                    var movieToAdd = new Movie { Name = movie.Name };
+                    var movieToAdd = new Movie { Name = movie.Name};
                     this.movies.Add(movieToAdd);
                     this.movies.SaveChanges();
+
+                    var movieLite = new MoviesLite { Name = movie.Name };
+                    this.moviesLite.Add(movieLite);
+                    this.moviesLite.SaveChanges();
                 }
                 catch
                 {

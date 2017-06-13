@@ -2,15 +2,15 @@ namespace MovieDb.Data.Migrations
 {
     using Models;
     using System.Data.Entity.Migrations;
-    public sealed class ConfigurationMovieDB : DbMigrationsConfiguration<MoviesContext>
+    public sealed class ConfigurationActors : DbMigrationsConfiguration<ActorsContext>
     {
-        public ConfigurationMovieDB()
+        public ConfigurationActors()
         {
             this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(MovieDb.Data.MoviesContext context)
+        protected override void Seed(ActorsContext context)
         {
             
         }
